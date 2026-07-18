@@ -226,7 +226,7 @@ function validateCurrentQuestion() {
   return true;
 }
 
-// Calculate career scores
+// Calculate career scores with normalized percentages
 function calculateCareerScores(formData) {
   const scores = {};
 
@@ -244,18 +244,18 @@ function calculateCareerScores(formData) {
   const qualifications = parseInt(formData.get('qualifications')) || 5;
   const autonomy = parseInt(formData.get('autonomy')) || 5;
 
-  // Score based on trait compatibility
+  // Score based on trait compatibility (normalized to be more generous)
   for (let career in careerDatabase) {
     const traits = careerDatabase[career].traits;
-    scores[career] += 10 - Math.abs(workLifeBalance - traits.workLifeBalance);
-    scores[career] += 10 - Math.abs(earnings - traits.earnings);
-    scores[career] += 10 - Math.abs(peopleFocus - traits.peopleFocus);
-    scores[career] += 10 - Math.abs(analyticalFocus - traits.analyticalFocus);
-    scores[career] += 10 - Math.abs(variety - traits.variety);
-    scores[career] += 10 - Math.abs(pressure - traits.pressure);
-    scores[career] += 10 - Math.abs(stability - traits.stability);
-    scores[career] += 10 - Math.abs(qualifications - traits.qualifications);
-    scores[career] += 10 - Math.abs(autonomy - traits.autonomy);
+    scores[career] += 20 - Math.abs(workLifeBalance - traits.workLifeBalance) * 1.5;
+    scores[career] += 20 - Math.abs(earnings - traits.earnings) * 1.5;
+    scores[career] += 20 - Math.abs(peopleFocus - traits.peopleFocus) * 1.5;
+    scores[career] += 20 - Math.abs(analyticalFocus - traits.analyticalFocus) * 1.5;
+    scores[career] += 20 - Math.abs(variety - traits.variety) * 1.5;
+    scores[career] += 20 - Math.abs(pressure - traits.pressure) * 1.5;
+    scores[career] += 20 - Math.abs(stability - traits.stability) * 1.5;
+    scores[career] += 20 - Math.abs(qualifications - traits.qualifications) * 1.5;
+    scores[career] += 20 - Math.abs(autonomy - traits.autonomy) * 1.5;
   }
 
   // Bonus for activities
@@ -263,7 +263,7 @@ function calculateCareerScores(formData) {
   activities.forEach(activity => {
     for (let career in careerDatabase) {
       if (careerDatabase[career].typicalActivities.includes(activity)) {
-        scores[career] += 15;
+        scores[career] += 30;
       }
     }
   });
@@ -273,7 +273,7 @@ function calculateCareerScores(formData) {
   industries.forEach(industry => {
     for (let career in careerDatabase) {
       if (careerDatabase[career].typicalIndustries.includes(industry)) {
-        scores[career] += 20;
+        scores[career] += 40;
       }
     }
   });
@@ -283,7 +283,7 @@ function calculateCareerScores(formData) {
   strengths.forEach(strength => {
     for (let career in careerDatabase) {
       if (careerDatabase[career].typicalStrengths.includes(strength)) {
-        scores[career] += 10;
+        scores[career] += 20;
       }
     }
   });
@@ -298,7 +298,7 @@ function calculateCareerScores(formData) {
     'entrepreneurship': 'consulting'
   };
   if (careerMapping[considering]) {
-    scores[careerMapping[considering]] += 25;
+    scores[careerMapping[considering]] += 50;
   }
 
   return scores;
@@ -313,8 +313,15 @@ function getTopRecommendations(scores, count = 3) {
   return sorted.slice(0, count);
 }
 
+// Normalize score to percentage (0-100)
+function scoreToPercentage(score, maxScore = 800) {
+  return Math.max(50, Math.min(99, Math.round((score / maxScore) * 100)));
+}
+
 // Display results
 function displayResults(topCareers, formData) {
+  const maxScore = Math.max(...topCareers.map(c => c.score));
+  
   const resultsHTML = `
     <div class="results-container">
       <div class="results-header">
@@ -325,7 +332,7 @@ function displayResults(topCareers, formData) {
       <div class="results-grid">
         ${topCareers.map((item, index) => {
           const career = careerDatabase[item.career];
-          const percentage = Math.round((item.score / 1000) * 100);
+          const percentage = scoreToPercentage(item.score, maxScore);
           
           return `
             <div class="result-card rank-${index + 1}">
