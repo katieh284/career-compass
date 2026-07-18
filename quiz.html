@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Compass Quiz - Find Your Perfect Career</title>
+    <link rel="stylesheet" href="quiz-styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><a href="index.html">Career Compass 🚀</a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#explore">Explore</a></li>
+                <li><a href="quiz.html" class="active">Quiz</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>Career Compass Quiz 🎯</h1>
+            <p>Discover graduate careers that match your interests, strengths and goals</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p class="progress-text"><span id="currentQuestion">1</span> / <span id="totalQuestions">20</span></p>
+        </div>
+
+        <form id="quizForm" class="quiz-form">
+            <!-- Question 1 -->
+            <div class="question-block" id="question1">
+                <h3>1. What stage are you currently at?</h3>
+                <div class="form-group">
+                    <select name="stage" required>
+                        <option value="">Select an option...</option>
+                        <option value="gcse">GCSE/A-level student</option>
+                        <option value="year1">Undergraduate (Year 1)</option>
+                        <option value="year2">Undergraduate (Year 2)</option>
+                        <option value="final">Undergraduate (Final year)</option>
+                        <option value="graduate">Graduate</option>
+                        <option value="changer">Career changer</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question-block" id="question2">
+                <h3>2. What subject area are you studying or have you studied?</h3>
+                <div class="form-group">
+                    <select name="subject" required>
+                        <option value="">Select an option...</option>
+                        <option value="economics">Economics</option>
+                        <option value="finance">Finance</option>
+                        <option value="business">Business</option>
+                        <option value="stem">STEM</option>
+                        <option value="cs">Computer Science / Technology</option>
+                        <option value="law">Law</option>
+                        <option value="humanities">Humanities / Social Sciences</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question-block" id="question3">
+                <h3>3. What is your current academic profile?</h3>
+                <div class="form-group">
+                    <select name="grades" required>
+                        <option value="">Select an option...</option>
+                        <option value="first">First Class / equivalent</option>
+                        <option value="21">Upper Second Class (2:1) / equivalent</option>
+                        <option value="22">Lower Second Class (2:2) / equivalent</option>
+                        <option value="other">Other / Prefer not to say</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question-block" id="question4">
+                <h3>4. How important is work-life balance to you?</h3>
+                <p class="slider-labels">
+                    <span>Work long hours</span>
+                    <span>Protect personal time</span>
+                </p>
+                <input type="range" name="workLifeBalance" min="1" max="10" value="5" class="slider">
+                <p class="slider-value">Selected: <span id="workLifeBalanceValue">5</span></p>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="question-block" id="question5">
+                <h3>5. How important is earning potential to you?</h3>
+                <p class="slider-labels">
+                    <span>Interest over salary</span>
+                    <span>Maximize earnings</span>
+                </p>
+                <input type="range" name="earnings" min="1" max="10" value="5" class="slider">
+                <p class="slider-value">Selected: <span id="earningsValue">5</span></p>
+            </div>
+
+            <!-- Question 6 -->
+            <div class="question-block" id="question6">
+                <h3>6. How much do you enjoy working with people?</h3>
+                <p class="slider-labels">
+                    <span>Independent work</span>
+                    <span>Collaboration & relationships</span>
+                </p>
+                <input type="range" name="peopleFocus" min="1" max="10" value="5" class="slider">
+                <p class="slider-value">Selected: <span id="peopleFocusValue">5</span></p>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="question-block" id="question7">
+                <h3>7. How much do you enjoy working with numbers, data and analysis?</h3>
+                <p class="slider-labels">
+                    <span>Creative & qualitative</span>
+                    <span>Analysis & data</span>
+                </p>
+                <input type="range" name="analyticalFocus" min="1" max="10" value="5" class="slider">
+                <p class="slider-value">Selected: <span id="analyticalFocusValue">5</span></p>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="question-block" id="question8">
+                <h3>8. How much variety do you want in your working day?</h3>
+                <p class="slider-labels">
+                    <span>Predictable routines</span>
+                    <span>New challenges daily</span>
+                </p>
+                <input type="range" name="variety" min="1" max="10" value="5" class="slider">
+                <p class="slider-value">Selected: <span id="varietyValue">5</span></p>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="question-block" id="question9">
+                <h3>9. How comfortable are you with high-pressure environments?</h3>
+                <p class="slider-labels">
+                    <span>Calm environment</span>
+                    <span>Thrive under pressure</span>
+                </p>
+                <input type="range" name="pressure" min="1" max="10" value="5" class="slider">
+                <p class="slider-value">Selected: <span id="pressureValue">5</span></p>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="question-block" id="question10">
+                <h3>10. How important is career stability and clear progression?</h3>
+                <p class="slider-labels">
+                    <span>Flexibility & risks</span>
+                    <span>Security & structure</span>
+                </p>
+                <input type="range" name="stability" min="1" max="10" value="5" class="slider">
+                <p class="slider-value">Selected: <span id="stabilityValue">5</span></p>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="question-block" id="question11">
+                <h3>11. How interested are you in gaining professional qualifications?</h3>
+                <p class="slider-labels">
+                    <span>Learning through experience</span>
+                    <span>Structured qualifications</span>
+                </p>
+                <input type="range" name="qualifications" min="1" max="10" value="5" class="slider">
+                <p class="slider-value">Selected: <span id="qualificationsValue">5</span></p>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="question-block" id="question12">
+                <h3>12. Which activities interest you most? (Select up to 5)</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="activities" value="problemSolving"> Solving complex problems</label>
+                    <label><input type="checkbox" name="activities" value="advising"> Advising clients or stakeholders</label>
+                    <label><input type="checkbox" name="activities" value="analysis"> Analysing data and trends</label>
+                    <label><input type="checkbox" name="activities" value="models"> Building financial models/spreadsheets</label>
+                    <label><input type="checkbox" name="activities" value="research"> Researching industries or markets</label>
+                    <label><input type="checkbox" name="activities" value="presenting"> Presenting ideas and communicating insights</label>
+                    <label><input type="checkbox" name="activities" value="managing"> Managing projects and teams</label>
+                    <label><input type="checkbox" name="activities" value="negotiating"> Negotiating and influencing decisions</label>
+                    <label><input type="checkbox" name="activities" value="technology"> Using technology and digital tools</label>
+                    <label><input type="checkbox" name="activities" value="ideas"> Creating new ideas or businesses</label>
+                </div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="question-block" id="question13">
+                <h3>13. Which industries interest you? (Select up to 5)</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="industries" value="finance"> Finance</label>
+                    <label><input type="checkbox" name="industries" value="consulting"> Consulting</label>
+                    <label><input type="checkbox" name="industries" value="tax"> Accounting & Tax</label>
+                    <label><input type="checkbox" name="industries" value="tech"> Technology</label>
+                    <label><input type="checkbox" name="industries" value="sports"> Sports Business</label>
+                    <label><input type="checkbox" name="industries" value="government"> Government & Public Policy</label>
+                    <label><input type="checkbox" name="industries" value="sustainability"> Sustainability & Environment</label>
+                    <label><input type="checkbox" name="industries" value="healthcare"> Healthcare</label>
+                    <label><input type="checkbox" name="industries" value="media"> Media & Entertainment</label>
+                    <label><input type="checkbox" name="industries" value="entrepreneurship"> Entrepreneurship</label>
+                </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="question-block" id="question14">
+                <h3>14. Which strengths best describe you? (Select all that apply)</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="strengths" value="analytical"> Analytical</label>
+                    <label><input type="checkbox" name="strengths" value="detailed"> Detail-oriented</label>
+                    <label><input type="checkbox" name="strengths" value="creative"> Creative</label>
+                    <label><input type="checkbox" name="strengths" value="strategic"> Strategic thinker</label>
+                    <label><input type="checkbox" name="strengths" value="organized"> Organised</label>
+                    <label><input type="checkbox" name="strengths" value="persuasive"> Persuasive</label>
+                    <label><input type="checkbox" name="strengths" value="communicator"> Strong communicator</label>
+                    <label><input type="checkbox" name="strengths" value="curious"> Curious and willing to learn</label>
+                    <label><input type="checkbox" name="strengths" value="competitive"> Competitive</label>
+                    <label><input type="checkbox" name="strengths" value="empathetic"> Empathetic and people-focused</label>
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="question-block" id="question15">
+                <h3>15. Where would you ideally like to work?</h3>
+                <div class="form-group">
+                    <select name="location" required>
+                        <option value="">Select an option...</option>
+                        <option value="london">London / major city</option>
+                        <option value="uk">Anywhere in the UK</option>
+                        <option value="international">International opportunities</option>
+                        <option value="remote">Remote or highly flexible</option>
+                        <option value="unsure">Not sure yet</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 16 -->
+            <div class="question-block" id="question16">
+                <h3>16. How much travel would you like in your career?</h3>
+                <p class="slider-labels">
+                    <span>Little to no travel</span>
+                    <span>Frequent travel</span>
+                </p>
+                <input type="range" name="travel" min="1" max="10" value="5" class="slider">
+                <p class="slider-value">Selected: <span id="travelValue">5</span></p>
+            </div>
+
+            <!-- Question 17 -->
+            <div class="question-block" id="question17">
+                <h3>17. How much autonomy do you want in your role?</h3>
+                <p class="slider-labels">
+                    <span>Clear instructions</span>
+                    <span>Independence & freedom</span>
+                </p>
+                <input type="range" name="autonomy" min="1" max="10" value="5" class="slider">
+                <p class="slider-value">Selected: <span id="autonomyValue">5</span></p>
+            </div>
+
+            <!-- Question 18 -->
+            <div class="question-block" id="question18">
+                <h3>18. What experience do you currently have? (Select all that apply)</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="experience" value="internship"> Internship/work experience</label>
+                    <label><input type="checkbox" name="experience" value="parttime"> Part-time employment</label>
+                    <label><input type="checkbox" name="experience" value="leadership"> Society leadership or committee roles</label>
+                    <label><input type="checkbox" name="experience" value="research"> Research/project experience</label>
+                    <label><input type="checkbox" name="experience" value="coding"> Coding or data skills</label>
+                    <label><input type="checkbox" name="experience" value="volunteering"> Volunteering</label>
+                    <label><input type="checkbox" name="experience" value="entrepreneurship"> Entrepreneurship/business projects</label>
+                    <label><input type="checkbox" name="experience" value="none"> None yet</label>
+                </div>
+            </div>
+
+            <!-- Question 19 -->
+            <div class="question-block" id="question19">
+                <h3>19. What matters most to you when choosing a career? (Select top 3)</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="priorities" value="salary" max="3"> Salary</label>
+                    <label><input type="checkbox" name="priorities" value="balance" max="3"> Work-life balance</label>
+                    <label><input type="checkbox" name="priorities" value="security" max="3"> Job security</label>
+                    <label><input type="checkbox" name="priorities" value="interesting" max="3"> Interesting work</label>
+                    <label><input type="checkbox" name="priorities" value="progression" max="3"> Career progression</label>
+                    <label><input type="checkbox" name="priorities" value="prestige" max="3"> Prestige/reputation</label>
+                    <label><input type="checkbox" name="priorities" value="impact" max="3"> Making an impact</label>
+                    <label><input type="checkbox" name="priorities" value="international" max="3"> International opportunities</label>
+                    <label><input type="checkbox" name="priorities" value="flexibility" max="3"> Flexibility</label>
+                    <label><input type="checkbox" name="priorities" value="learning" max="3"> Learning opportunities</label>
+                </div>
+            </div>
+
+            <!-- Question 20 -->
+            <div class="question-block" id="question20">
+                <h3>20. What careers are you currently considering?</h3>
+                <div class="form-group">
+                    <select name="considering" required>
+                        <option value="">Select an option...</option>
+                        <option value="consulting">Consulting</option>
+                        <option value="finance">Finance</option>
+                        <option value="tax">Accounting/Tax</option>
+                        <option value="economics">Economics</option>
+                        <option value="tech">Technology</option>
+                        <option value="public">Public sector</option>
+                        <option value="entrepreneurship">Entrepreneurship</option>
+                        <option value="other">Other</option>
+                        <option value="unsure">I don't know yet</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Question 21 -->
+            <div class="question-block" id="question21">
+                <h3>21. What would your ideal career look like in 10 years? (Optional)</h3>
+                <div class="form-group">
+                    <textarea name="idealCareer" rows="4" placeholder="Share your vision..."></textarea>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" id="prevBtn" class="btn btn-secondary" onclick="previousQuestion()" style="display:none;">← Previous</button>
+                <button type="button" id="nextBtn" class="btn btn-primary" onclick="nextQuestion()">Next →</button>
+                <button type="submit" id="submitBtn" class="btn btn-success" style="display:none;">Get My Results 🎯</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>
