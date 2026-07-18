@@ -16,7 +16,11 @@ const careerDatabase = {
       qualifications: 5
     },
     companies: ["McKinsey & Company", "Boston Consulting Group", "Bain & Company", "Deloitte Consulting", "PwC Strategy&"],
-    avgSalary: "£65,000 - £150,000+",
+    salary: {
+      grad: "£50,000",
+      fiveYears: "£90,000",
+      twentyYears: "£200,000+"
+    },
     keySkills: ["Problem-solving", "Communication", "Client management", "Analytics", "Leadership"],
     typicalActivities: ["advising", "problemSolving", "presenting", "analysis", "managing"],
     typicalIndustries: ["consulting"],
@@ -39,7 +43,11 @@ const careerDatabase = {
       qualifications: 7
     },
     companies: ["Goldman Sachs", "JP Morgan", "Morgan Stanley", "Barclays", "HSBC", "Citi", "Bank of America"],
-    avgSalary: "£80,000 - £200,000+",
+    salary: {
+      grad: "£60,000",
+      fiveYears: "£120,000",
+      twentyYears: "£300,000+"
+    },
     keySkills: ["Financial modeling", "Data analysis", "Risk management", "Attention to detail", "Trading acumen"],
     typicalActivities: ["analysis", "models", "research", "negotiating"],
     typicalIndustries: ["finance"],
@@ -48,8 +56,8 @@ const careerDatabase = {
 
   tax: {
     name: "Accounting & Tax",
-    description: "Tax advisory and compliance expertise",
-    longDescription: "Tax professionals help clients minimize tax liabilities, ensure compliance, and optimize their financial positions. Work includes tax planning, compliance, and advisory for individuals and corporations.",
+    description: "Tax advisory, compliance, and tax strategy expertise",
+    longDescription: "Tax specialists help clients minimize tax liabilities, ensure regulatory compliance, and optimize their financial positions through specialized tax expertise. Work includes tax planning, compliance, and strategic tax advisory for individuals and corporations.",
     traits: {
       analyticalFocus: 8,
       stability: 8,
@@ -62,7 +70,11 @@ const careerDatabase = {
       variety: 5
     },
     companies: ["Deloitte", "PwC", "EY", "KPMG", "Grant Thornton", "BDO", "Crowe"],
-    avgSalary: "£50,000 - £120,000",
+    salary: {
+      grad: "£28,000",
+      fiveYears: "£50,000",
+      twentyYears: "£120,000"
+    },
     keySkills: ["Tax knowledge", "Attention to detail", "Client service", "Compliance expertise", "Problem-solving"],
     typicalActivities: ["analysis", "research", "models", "advising"],
     typicalIndustries: ["tax", "consulting"],
@@ -85,7 +97,11 @@ const careerDatabase = {
       qualifications: 8
     },
     companies: ["Bank of England", "Office for National Statistics", "World Bank", "IMF", "Institute for Fiscal Studies", "Resolution Foundation", "LSE"],
-    avgSalary: "£45,000 - £100,000",
+    salary: {
+      grad: "£30,000",
+      fiveYears: "£55,000",
+      twentyYears: "£100,000"
+    },
     keySkills: ["Research", "Data analysis", "Critical thinking", "Econometrics", "Policy understanding"],
     typicalActivities: ["analysis", "research", "problemSolving"],
     typicalIndustries: ["government"],
@@ -94,8 +110,8 @@ const careerDatabase = {
 
   professionalServices: {
     name: "Professional Services",
-    description: "Audit, advisory, and business services",
-    longDescription: "Professional services firms offer audit, tax, and advisory services to organizations. You'll develop deep client relationships, lead projects, and specialize in your area of expertise.",
+    description: "Audit, advisory, assurance, and business services",
+    longDescription: "Professional services firms offer comprehensive audit, tax, advisory, and assurance services to organizations across sectors. You'll develop deep client relationships, lead diverse projects, and build expertise across multiple service lines.",
     traits: {
       analyticalFocus: 7,
       stability: 7,
@@ -108,7 +124,11 @@ const careerDatabase = {
       variety: 6
     },
     companies: ["Big 4 (Deloitte, PwC, EY, KPMG)", "BDO", "Grant Thornton", "Crowe", "Mazars", "Haysmacintyre"],
-    avgSalary: "£50,000 - £130,000",
+    salary: {
+      grad: "£28,000",
+      fiveYears: "£55,000",
+      twentyYears: "£130,000"
+    },
     keySkills: ["Audit", "Advisory", "Client management", "Problem-solving", "Leadership"],
     typicalActivities: ["advising", "analysis", "managing", "research", "presenting"],
     typicalIndustries: ["consulting", "tax"],
@@ -355,8 +375,21 @@ function displayResults(topCareers, formData) {
                 </div>
                 
                 <div class="detail-section">
-                  <h4>💰 Salary Range</h4>
-                  <p class="salary">${career.avgSalary}</p>
+                  <h4>💰 Salary Progression</h4>
+                  <div class="salary-breakdown">
+                    <div class="salary-item">
+                      <span class="salary-label">Graduate</span>
+                      <span class="salary-amount">${career.salary.grad}</span>
+                    </div>
+                    <div class="salary-item">
+                      <span class="salary-label">5 Years</span>
+                      <span class="salary-amount">${career.salary.fiveYears}</span>
+                    </div>
+                    <div class="salary-item">
+                      <span class="salary-label">20 Years</span>
+                      <span class="salary-amount">${career.salary.twentyYears}</span>
+                    </div>
+                  </div>
                 </div>
                 
                 <div class="detail-section">
